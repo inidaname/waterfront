@@ -1,0 +1,9 @@
+header {
+  height: 120px;
+}
+
+@media print {
+  header{
+    border: none;
+  }
+}

@@ -1,0 +1,143 @@
+<div class="container mt-5 p-5">
+  <span class="text-danger">{{message}}</span>
+  <section class="row w-100">
+    <div class="col-6 m-auto p-4 non-printer">
+      <div class="form-group row">
+        <label for="meterNumber" class="col-sm-4 col-form-label">Meter Number</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="meterNumber" id="meterNumber" placeholder="Meter Number">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="houseAddress" class="col-sm-4 col-form-label">House Address`</label>
+        <div class="col-sm-6">
+          <textarea type="text" class="form-control" [(ngModel)]="houseAddress" id="houseAddress" placeholder="House Address"></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="installationDate" class="col-sm-4 col-form-label">Installation Date</label>
+          <div class="input-group col-sm-6">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                   name="dp" [(ngModel)]="installationDate" ngbDatepicker #inst="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="inst.toggle()" type="button"></button>
+            </div>
+          </div>
+      </div>
+      <div class="form-group row">
+        <label for="leakageStatus" class="col-sm-4 col-form-label">Leakage Status</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="leakageStatus" id="leakageStatus" placeholder="Leakage Status">
+        </div>
+      </div>
+      <h6 class="col-12 mt-5">Billing Period</h6>
+      <div class="form-group row">
+        <label for="fromDate" class="col-sm-4 col-form-label">From</label>
+        <div class="input-group col-sm-6">
+          <input class="form-control" placeholder="yyyy-mm-dd"
+                 name="dp" [(ngModel)]="fromDate" ngbDatepicker #from="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="from.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="toTheDate" class="col-sm-4 col-form-label">To</label>
+        <div class="input-group col-sm-6">
+          <input class="form-control" placeholder="yyyy-mm-dd"
+                 name="dp" [(ngModel)]="toTheDate" ngbDatepicker #to="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="to.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+      <h6 class="col-12 mt-5">Metering Reading</h6>
+      <div class="form-group row">
+        <label for="previous" class="col-sm-4 col-form-label">Previous</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="previous" id="previous" placeholder="Previous">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="current" class="col-sm-4 col-form-label">Current</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="current" id="current" placeholder="Current">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="unitConsume" class="col-sm-4 col-form-label">Cubic Unit Comsume</label>
+        <div class="col-sm-6">
+          <input type="number" class="form-control" [(ngModel)]="unitConsume" id="unitConsume" placeholder="Unit Consumed">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="unitCost" class="col-sm-4 col-form-label">Cost per Unit</label>
+        <div class="col-sm-6">
+          <input type="number" class="form-control" [(ngModel)]="unitCost" id="unitCost" placeholder="Cost per Unit">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="outStanding" class="col-sm-4 col-form-label">Outstanding Charges</label>
+        <div class="col-sm-6">
+          <input type="number" class="form-control" [(ngModel)]="outstanding" id="outStanding" placeholder="Cost per Unit">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+          <button type="submit" class="btn btn-primary" (click)="subMitFor()">Submit and Print</button>
+        </div>
+      </div>
+    </div>
+    <div class="m-auto pr-wi p-4 border">
+      <div class="row">
+        <h6 class="col-12 mb-4">Meter Details</h6>
+        <span class="col-sm-7 my-1">Meter Number</span>
+        <span class="col-sm-4 my-1">{{meterNumber}}</span>
+        <span class="col-sm-7 my-1">House Address</span>
+        <span class="col-sm-4 my-1">{{houseAddress}}</span>
+        <span class="col-sm-7 my-1">Installation Date</span>
+        <span class="col-sm-5 my-1" [(ngModel)]="installedDate">{{installationDate?.month + ' ' + installationDate?.day + ' ' + installationDate?.year | date}}</span>
+        <span class="col-sm-7 my-1">Leakage Status</span>
+        <span class="col-sm-4 my-1">{{leakageStatus}}</span>
+
+        <h6 class="mt-4 col-12">Billing Period</h6>
+        <span class="col-sm-6 my-1">From</span>
+        <span class="col-sm-5 my-1">{{fromDate.month + ' ' + fromDate.day + ' ' + fromDate.year | date}}</span>
+        <span class="col-sm-6 my-1">To</span>
+        <span class="col-sm-5 my-1">{{toTheDate.month + ' ' + toTheDate.day + ' ' + toTheDate.year | date}}</span>
+
+        <h6 class="mt-4 col-12">Metering Reading</h6>
+        <span class="col-sm-7 my-1">Previous Reading</span>
+        <span class="col-sm-4 my-1">{{previous}}</span>
+        <span class="col-sm-7 my-1">Current Reading</span>
+        <span class="col-sm-4 my-1">{{current}}</span>
+        <span class="col-sm-7 my-1">Cubic Unit Consumed</span>
+        <span class="col-sm-4 my-1">{{unitConsume}}</span>
+        <span class="col-sm-7 my-1">Cost per Unit</span>
+        <span class="col-sm-4 my-1">{{unitCost | currency:  'NGN' : 'symbol-narrow' }}</span>
+        <span class="col-sm-7 my-1">Current Charges</span>
+        <span class="col-sm-4 my-1" [(ngModel)]="curCharge">{{unitCost * unitConsume | currency:  'NGN' : 'symbol-narrow'}}</span>
+        <span class="col-sm-7 my-1">Outstanding</span>
+        <span class="col-sm-4 my-1">{{outstanding | currency:  'NGN' : 'symbol-narrow'}}</span>
+        <span class="col-sm-7 my-1 font-weight-bold">Total Due</span>
+        <span class="col-sm-4 my-1 font-weight-bold">{{unitCost * unitConsume + outstanding | currency:  'NGN' : 'symbol-narrow'}}</span>
+
+      </div>
+    </div>
+  </section>
+</div>
+<footer >
+ <p>Payment could be made at the facility office or through the following account numbers</p>
+<h6>Square gold ltd</h6>
+<ul class="list-group">
+  <li class="list-group-item">1014860318	 Zenith bank</li>
+  <li class="list-group-item">0001388501	Jaiz bank</li>
+</ul>
+
+<p>Please indicate your house number while when making any payment</p>
+
+<p>If this bill is not paid within 7 days the supply may be disconnected without further notice and a sum of 500 naira would be paid as reconnection charges after making the payment.
+For enquires or complaints kindly contact</p>
+
+</footer>
