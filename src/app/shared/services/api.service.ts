@@ -14,6 +14,18 @@ export class ApiService {
     private http: HttpClient
   ) {}
 
+  checkHouseNumber(house): Observable<any> {
+    return this.http
+      .get(`${this.api}/record/${house}`)
+      .pipe(map((record: any) => record), catchError(this.handleError));
+  }
+
+  update(data) {
+    return this.http
+      .patch(`${this.api}/record`, data)
+      .pipe(map((record: any) => record), catchError(this.handleError));
+  }
+
   createRecord(data: any): Observable<any> {
     return this.http
       .post<any>(`${this.api}/record`, data)
