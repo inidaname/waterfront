@@ -41,12 +41,19 @@ export class HomeComponent implements OnInit {
     if (this.meterNumber && this.meterNumber.length > 2) {
       this.api.checkHouseNumber(this.meterNumber)
         .subscribe((record: any) => {
+          this.installationDate = {
+            month: 0,
+            day: 0,
+            year: 0
+          };
+
+          console.log(record)
           if (record) {
             this.houseAddress = record.data.houseAddress;
-            this.installationDate = record.data.installationDate;
+            this.installationDate.month = record.data.installationDate.month;
+            this.installationDate.year = record.data.installationDate.year;
+            this.installationDate.day = record.data.installationDate.day;
             this.leakageStatus = record.data.leakageStatus;
-            this.fromDate = record.data.fromDate;
-            this.toTheDate = record.data.toTheDate;
             this.previous = record.data.current;
             this.setCame = true;
           }

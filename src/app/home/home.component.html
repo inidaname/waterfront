@@ -64,19 +64,19 @@
       <div class="form-group row" *ngIf="!estimatedBill">
         <label for="previous" class="col-sm-4 col-form-label">Previous</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="previous" id="previous" name="previous" placeholder="Previous">
+          <input type="number" class="form-control" [(ngModel)]="previous" id="previous" name="previous" placeholder="Previous">
         </div>
       </div>
       <div class="form-group row">
         <label for="current" class="col-sm-4 col-form-label">Current</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="current" id="current" name="current" placeholder="Current">
+          <input type="number" class="form-control" [(ngModel)]="current" id="current" name="current" placeholder="Current">
         </div>
       </div>
       <div class="form-group row">
         <label for="unitConsume" class="col-sm-4 col-form-label">Cubic Unit Comsume</label>
         <div class="col-sm-6">
-          <input type="number" class="form-control" [(ngModel)]="unitConsume" id="unitConsume" name="unitConsume" placeholder="Unit Consumed" [value]="previous - current">
+          <input type="number" class="form-control" [(ngModel)]="unitConsume" id="unitConsume" name="unitConsume" placeholder="Unit Consumed" [value]="current - previous">
         </div>
       </div>
       <div class="form-group row">
@@ -121,18 +121,18 @@
         <h6 class="mt-4 col-12">Metering Reading</h6>
         <span class="col-sm-7 my-1" *ngIf="!estimatedBill">Previous Reading</span>
         <span class="col-sm-4 my-1" *ngIf="!estimatedBill">{{previous}}</span>
-        <span class="col-sm-7 my-1">Current Reading</span>
-        <span class="col-sm-4 my-1">{{current}}</span>
-        <span class="col-sm-7 my-1">Cubic Unit Consumed</span>
-        <span class="col-sm-4 my-1">{{previous - current}}</span>
-        <span class="col-sm-7 my-1">Cost per Unit</span>
-        <span class="col-sm-4 my-1">{{unitCost | currency:  'NGN' : 'symbol-narrow' }}</span>
-        <span class="col-sm-7 my-1">Current Charges</span>
-        <span class="col-sm-4 my-1">{{unitCost * unitConsume | currency:  'NGN' : 'symbol-narrow'}}</span>
+        <span class="col-sm-7 my-1" *ngIf="!estimatedBill">Current Reading</span>
+        <span class="col-sm-4 my-1" *ngIf="!estimatedBill">{{current}}</span>
+        <span class="col-sm-7 my-1" *ngIf="!estimatedBill">Cubic Unit Consumed</span>
+        <span class="col-sm-4 my-1" *ngIf="!estimatedBill">{{current - previous}}</span>
+        <span class="col-sm-7 my-1" *ngIf="!estimatedBill">Cost per Unit</span>
+        <span class="col-sm-4 my-1" *ngIf="!estimatedBill">{{unitCost | currency:  'NGN' : 'symbol-narrow' }}</span>
+        <span class="col-sm-7 my-1" *ngIf="!estimatedBill">Current Charges</span>
+        <span class="col-sm-4 my-1" *ngIf="!estimatedBill">{{unitCost * (current - previous) | currency:  'NGN' : 'symbol-narrow'}}</span>
         <span class="col-sm-7 my-1">Outstanding</span>
         <span class="col-sm-4 my-1">{{outstanding | currency:  'NGN' : 'symbol-narrow'}}</span>
         <span class="col-sm-7 my-1 font-weight-bold">Total Due</span>
-        <span class="col-sm-4 my-1 font-weight-bold">{{unitCost * unitConsume + outstanding | currency:  'NGN' : 'symbol-narrow'}}</span>
+        <span class="col-sm-4 my-1 font-weight-bold">{{unitCost * (current - previous) + outstanding | currency:  'NGN' : 'symbol-narrow'}}</span>
 
       </div>
     </div>
@@ -140,14 +140,15 @@
 </div>
 <footer >
  <p>Payment could be made at the facility office or through the following account numbers</p>
-<h6>Square gold ltd</h6>
+<h6>Square Ggold Ltd</h6>
 <p>
   Tel Number: <span class="font-weight-bold">08134947232</span>
 </p>
 <h6>Bank Details</h6>
+<p>Accoutn Name <strong>Square Ggold Ltd</strong></p>
 <ul class="list-group">
-  <li class="list-group-item">1014860318	 Zenith bank</li>
-  <li class="list-group-item">0001388501	Jaiz bank</li>
+  <li class="list-group-item"><strong> 1014860318	 Zenith bank </strong></li>
+  <li class="list-group-item"><strong>0001388501	Jaiz bank </strong></li>
 </ul>
 
 <p>Please indicate your house number while when making any payment</p>
