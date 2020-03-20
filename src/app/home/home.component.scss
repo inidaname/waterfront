@@ -24,17 +24,24 @@ button.calendar, button.calendar:active {
 }
 
 @media print {
+  body {
+    color: #222 !important;
+    font-weight: bolder !important;
+  }
   section {
     width: 80mm !important;
+    color: #666;
   }
 
   .pr-wi {
     width: 100vw !important;
+    color: #666;
   }
   .non-printer{
     display: none;
   }
   footer {
     width: 80mm!important;
+    color: #666;
   }
 }
