@@ -27,21 +27,22 @@ button.calendar, button.calendar:active {
   body {
     color: #222 !important;
     font-weight: bolder !important;
+    background-color: #fff !important;
   }
   section {
     width: 80mm !important;
-    color: #666;
+    color: #222 !important;
   }
 
   .pr-wi {
     width: 100vw !important;
-    color: #666;
+    color: #222 !important;
   }
   .non-printer{
     display: none;
   }
   footer {
     width: 80mm!important;
-    color: #666;
+    color: #222 !important;
   }
 }
